@@ -1,9 +1,6 @@
 #include "cache.h"
 #include "set.h"
 
-#define IS_INC 0  // inclusive
-#define IS_NINE 0  //non inclusive non exclusive
-#define IS_EXC 1    //exclusive
 uint64_t l2pf_access = 0;
 
 void CACHE::handle_fill()
@@ -94,10 +91,8 @@ void CACHE::handle_fill()
 
     uint8_t do_fill = 1;
 
-
-    
     // is this dirty?
-    if (block[set][way].dirty || (IS_EXC && block[set][way].valid))
+    if (block[set][way].dirty)
     {
 
       // check if the lower level WQ has enough room to keep this writeback request
@@ -173,30 +168,8 @@ void CACHE::handle_fill()
       // COLLECT STATS
       sim_miss[fill_cpu][MSHR.entry[mshr_index].type]++;
       sim_access[fill_cpu][MSHR.entry[mshr_index].type]++;
-      if (IS_INC){
-        if(fill_level == FILL_L2){
-          if (MSHR.entry[mshr_index].fill_l1i)
-          {
-            upper_level_icache[fill_cpu]->invalidate_entry(block[set][way].address);
-          }
-          if (MSHR.entry[mshr_index].fill_l1d)
-          {
-            upper_level_dcache[fill_cpu]->invalidate_entry(block[set][way].address);
-          }
-      
-        }
-        if(fill_level == FILL_LLC){
-        upper_level_dcache[fill_cpu]->upper_level_dcache[fill_cpu]->invalidate_entry(block[set][way].address);
-        upper_level_dcache[fill_cpu]->invalidate_entry(block[set][way].address);
-          
-        }
 
-      }
-
-      if(!IS_EXC || FILL_L1){
-        fill_cache(set, way, &MSHR.entry[mshr_index]);
-      }
-
+      fill_cache(set, way, &MSHR.entry[mshr_index]);
 
       // RFO marks cache line dirty
       if (cache_type == IS_L1D)
@@ -227,12 +200,7 @@ void CACHE::handle_fill()
           if (MSHR.entry[mshr_index].is_data)
             upper_level_dcache[fill_cpu]->return_data(&MSHR.entry[mshr_index]);
         }
-
-        // if(IS_EXC){
-        //   invalidate_entry(block[set][way].address);
-        // }
       }
-
 
       // update processed packets
       if (cache_type == IS_ITLB)
@@ -444,7 +412,7 @@ void CACHE::handle_writeback()
           }
           else
           { // WE SHOULD NOT REACH HERE
-            std::cerr << "[" << NAME << "] MSHR errors" << endl;
+            cerr << "[" << NAME << "] MSHR errors" << endl;
             assert(0);
           }
         }
@@ -481,7 +449,7 @@ void CACHE::handle_writeback()
         uint8_t do_fill = 1;
 
         // is this dirty?
-        if (block[set][way].dirty || (IS_EXC && block[set][way].valid))
+        if (block[set][way].dirty)
         {
 
           // check if the lower level WQ has enough room to keep this writeback request
@@ -557,9 +525,7 @@ void CACHE::handle_writeback()
           sim_miss[writeback_cpu][WQ.entry[index].type]++;
           sim_access[writeback_cpu][WQ.entry[index].type]++;
 
-          if(!IS_EXC || FILL_L1){
-            fill_cache(set, way, &WQ.entry[index]);
-          }
+          fill_cache(set, way, &WQ.entry[index]);
 
           // mark dirty
           block[set][way].dirty = 1;
