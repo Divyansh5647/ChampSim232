@@ -1,4 +1,4 @@
-# CS232 Project - Cache Hierarchy Optimisations for SAT Solver
+# CS230 Project - Cache Hierarchy Optimisations for SAT Solver
 ### Members: Aditya Nemiwal(210050004), Ashwin Goyal(210050024), Divyansh Singhal(210050045)
 On all the traces provided, the following various parameters(or policies) were altered and the resulting changes were observed like IPC or miss rates:
 - Cache Inclusion Policies: Inclusive, Exclusive, and NINE(Non Inclusive Non Exclusive)
