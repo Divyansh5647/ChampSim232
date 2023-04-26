@@ -1,0 +1,89 @@
+
+
+
+
+1) Cache size and latency:
+
+Take 1 trace and - 
+	1. Vary cache ratio(associativity) keeping size constant - only for llc and l2c(only one at a time). Plot miss rate? miss latency? IPC?
+	2. Vary cache size and associativity keeping number of sets constant.
+	3. Vary cache size keeping associativity constant. 
+		a) vary all 3 caches independently within their ranges of comfort - keep latencies constant, we just want to see trends. Likely that llc size will cause more differences than others. 
+		Plot corresponding miss rate and ipc.
+		b) Alter llc cache size(keeping associativity constant) and llc latency according to A. logarithmic B. linear. In linear make multiple plots for different slopes and show optimal slope value where
+		 negligible change wrt size.
+
+
+
+Lets start with the most obvious question, what happens when cache size is increased? In this scenario the latency should also increase as the cache is farther from memory... 
+so we may also need to change latency. How do we do that?
+
+
+part 1
+
+For llc:
+l2c,l1d at default values, llc : (2048,16),(1024,32),(4096,8)
+plot miss rate and ipc variation at llc
+
+for l2c:
+llc,l1d at default values, l2c : (1024,8),(2048,4),(512,16)
+plot miss rate and ipc variation at l2c
+
+
+part 2
+
+For llc:
+l2c,l1d at default values, llc : (2048,16),(2048,32),(2048,8)
+plot miss rate and ipc variation at llc
+
+for l2c:
+llc,l1d at default values, l2c : (1024,8),(1024,4),(1024,16)
+plot miss rate and ipc variation at llc
+
+
+
+Part 3 a)
+
+llc	s1,s2,s3	2048,4096,8192	w=16
+l2c	s4,s5,s6	1024,2048,4096	w=8
+l1d	s7,s8,s9	64,128,256	w=12
+
+will make for (s2,s5,s8), then change s2 on either side,then s5 on either side, then s8 on either side. All this assuming constant latency. Plot miss rate and ipc.
+
+
+Part 3 b)
+
+Now will just alter llc..
+
+will just increase num_sets and latencies accordingly.
+
+
+Logarithmic:
+
+llc_set - (1024,2048,4096,8192)*func(log,size)
+everything else at default
+
+
+Linear:
+
+llc_set - (1024,2048,4096)*func(line[slope=(x,y,z)],size)
+everything else at default
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
