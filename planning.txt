@@ -29,6 +29,12 @@ Take 1 trace and -
 
 
 
+For the older informal documentation refer to:
+https://www.notion.so/Memory-optimization-for-SAT-solvers-bba8f836a6b949febc5282dac84a6234?pvs=4
+
+
+
+
 
 
 
