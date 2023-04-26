@@ -33,8 +33,8 @@ repl = "lru"
 size1 = 30
 size2 = 30
 
-for llc_size in [2048,4096,8192,16384]:
-    for llc_way in [8]:
+for llc_size in [16*1024,16*2048,16*4096,16*8192]:
+    for llc_way in [16]:
         for l2c_set in [1024]:
             for l2c_way in [8]:
                 for l1d_set in [64]:
