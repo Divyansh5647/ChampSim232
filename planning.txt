@@ -6,15 +6,18 @@ Ideas: most significant to least
 
 Take 1 trace and - 
 	1. Vary cache ratio(associativity) keeping size constant - only for llc and l2c(only one at a time). Plot miss rate? miss latency? IPC?
-	2. Vary cache size keeping all associativites constant. 
+	2. Vary cache size and associativity keeping number of sets constant.
+	2. Vary cache size keeping associativity constant. 
 		a) vary all 3 caches independently within their ranges of comfort - keep latencies constant, we just want to see trends. Likely that llc size will cause more differences than others. Plot corresponding miss 
 		rate and ipc.
-		b) Alter llc cache size and llc latency according to A. logarithmic B. linear. In linear make multiple plots for different slopes and show optimal slope value where negligible change wrt size.
+		b) Alter llc cache size(keeping associativity constant) and llc latency according to A. logarithmic B. linear. In linear make multiple plots for different slopes and show optimal slope value where
+		 negligible change wrt size.
 
 2) Block size:
 	1. Keep ratio constant, vary block size with sets and ways. Total memory is constant
 	2. Keep sets constant, vary block size with ways. Total memory is constant
 	3. Keep ways constant, vary block size with sets. Total memory constant
+	4. Vary block and size both while keeping set,way constant
 
 3) Inclusion Exclusion:
 	1. Show for n traces, m cache sizes each that inclusion exclusion doesn't help
