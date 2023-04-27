@@ -26,29 +26,55 @@ cache.h :
 #define LLC_LATENCY 20 
 '''
 
+'''
+Final output format in the file
+BLOCK SIZE : <block_size>
+<llc_set> <llc_way> <l2c_set> <l2c_way> <l1d_set> <l1d_way> <ipc>
+ <llc_miss_freq> <llc_latency> <l2c_miss_freq> <l2c_latency> <l1d_miss_freq> <l1d_latency>
+'''
+
+
 blocks_m = [1,2,4,8,16]   # m is the multiplying factor for change in block size
 # blocksize *= m^2
 # set and way /= m
+# Block size in any iteration is 32*m
 
-repl = "lru"
-size1 = 30
-size2 = 30
+
+
+repl = "lru"    # change the replacement policy here
+size1 = 30      # No of warmup instructions    
+size2 = 30      # No of test instructions
+
+# change the name of trace here
 
 # tracename="cadical-high-60K-113B.champsimtrace.xz"
 # tracename="cadical-high-60K-134B.champsimtrace.xz"
 tracename="cadical-high-60K-1227B.champsimtrace.xz"
 # tracename = "kissat-inc-high-30K-1802B.champsimtrace.xz"
-llc_set = 2048*2
+
+# You can comment/uncomment lines of code to run the code for Case A/B
+# Case A : You want to get IPC values keeping the number of ways same as default in all the 3 cases (description in line 66)
+# Case B : Keeping twice the number of ways, test only in cases 1,3
+llc_set = 2048*2           # <-- Case B
 llc_way = 16*2*2
 l2c_set = 1024*2
 l2c_way = 8*2*2
 l1d_set = 64*2
 l1d_way = 12*2*2
 
+# llc_set = 2048*2          # <--  Case A : all these 6 declarations
+# llc_way = 16*2                               
+# l2c_set = 1024*2               
+# l2c_way = 8*2                  
+# l1d_set = 64*2
+# l1d_way = 12*2
+
+
 # CASE - 1 TESTING B.S = c, W = c
 # CASE - 2 TESTING B.W = c, S = c
 # CASE - 3 TESTING S = c, W = c
-for case in [1,3]:
+for case in [1,3]:            # <-- Case B
+# for case in [1,2,3]:        # <-- Case A
     if case==1:
         for m in blocks_m:
             with open("inc/cache.h", 'r') as f:
