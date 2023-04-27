@@ -40,8 +40,8 @@
 #define LOG2_PAGE_SIZE 12
 
 // CACHE
-#define BLOCK_SIZE 64
-#define LOG2_BLOCK_SIZE 6
+#define BLOCK_SIZE 512
+#define LOG2_BLOCK_SIZE 9
 #define MAX_READ_PER_CYCLE 8
 #define MAX_FILL_PER_CYCLE 1
 

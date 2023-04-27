@@ -1,3 +1,16 @@
+In file included from inc/dram_controller.h:4,
+                 from src/dram_controller.cc:1:
+inc/memory_class.h: In member function ‘virtual int MEMORY::invalidate_entry(uint64_t)’:
+inc/memory_class.h:37:56: warning: no return statement in function returning non-void [-Wreturn-type]
+   37 |     virtual int invalidate_entry(uint64_t inval_addr) {};
+      |                                                        ^
+In file included from inc/cache.h:4,
+                 from inc/ooo_cpu.h:4,
+                 from src/ooo_cpu.cc:1:
+inc/memory_class.h: In member function ‘virtual int MEMORY::invalidate_entry(uint64_t)’:
+inc/memory_class.h:37:56: warning: no return statement in function returning non-void [-Wreturn-type]
+   37 |     virtual int invalidate_entry(uint64_t inval_addr) {};
+      |                                                        ^
 src/ooo_cpu.cc: In member function ‘void O3_CPU::add_load_queue(uint32_t, uint32_t)’:
 src/ooo_cpu.cc:1240:17: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
  1240 |                 if (LQ.entry[lq_index].producer_id != UINT64_MAX)
@@ -21,40 +34,78 @@ src/ooo_cpu.cc: In member function ‘void O3_CPU::complete_instr_fetch(PACKET_Q
 src/ooo_cpu.cc:1858:11: warning: unused variable ‘instruction_physical_address’ [-Wunused-variable]
  1858 |  uint64_t instruction_physical_address = (queue->entry[index].instruction_pa << LOG2_PAGE_SIZE) | (complete_ip & ((1 << LOG2_PAGE_SIZE) - 1));
       |           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
-src/cache.cc: In member function ‘void CACHE::handle_fill()’:
-src/cache.cc:131:4: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
-  131 |    if (cache_type == IS_L1I)
-      |    ^~
-src/cache.cc:133:6: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
-  133 |      if (cache_type == IS_L1D)
-      |      ^~
-src/cache.cc: In member function ‘void CACHE::handle_writeback()’:
-src/cache.cc:462:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
-  462 |     if (cache_type == IS_L1I)
-      |     ^~
-src/cache.cc:464:21: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
-  464 |                     if (cache_type == IS_L1D)
-      |                     ^~
-src/cache.cc: In member function ‘void CACHE::handle_read()’:
-src/cache.cc:534:7: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
-  534 |       if (read_cpu == NUM_CPUS)
-      |       ^~
-src/cache.cc:538:9: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
-  538 |         if ((RQ.entry[RQ.head].event_cycle <= current_core_cycle[read_cpu]) && (RQ.occupancy > 0)) {
-      |         ^~
-src/cache.cc: In member function ‘void CACHE::handle_prefetch()’:
-src/cache.cc:837:7: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
-  837 |       if (prefetch_cpu == NUM_CPUS)
-      |       ^~
-src/cache.cc:841:9: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
-  841 |         if ((PQ.entry[PQ.head].event_cycle <= current_core_cycle[prefetch_cpu]) && (PQ.occupancy > 0)) {
-      |         ^~
 In file included from /usr/include/getopt.h:24,
                  from src/main.cc:3:
 /usr/include/features.h:187:3: warning: #warning "_BSD_SOURCE and _SVID_SOURCE are deprecated, use _DEFAULT_SOURCE" [-Wcpp]
   187 | # warning "_BSD_SOURCE and _SVID_SOURCE are deprecated, use _DEFAULT_SOURCE"
       |   ^~~~~~~
+In file included from inc/cache.h:4,
+                 from inc/ooo_cpu.h:4,
+                 from src/main.cc:4:
+inc/memory_class.h: In member function ‘virtual int MEMORY::invalidate_entry(uint64_t)’:
+inc/memory_class.h:37:56: warning: no return statement in function returning non-void [-Wreturn-type]
+   37 |     virtual int invalidate_entry(uint64_t inval_addr) {};
+      |                                                        ^
 src/main.cc: In function ‘uint64_t va_to_pa(uint32_t, uint64_t, uint64_t, uint64_t, uint8_t)’:
 src/main.cc:344:48: warning: variable ‘pr2’ set but not used [-Wunused-but-set-variable]
   344 |             map <uint64_t, uint64_t>::iterator pr2 = recent_page.begin();
       |                                                ^~~
+In file included from inc/cache.h:4,
+                 from inc/uncore.h:5,
+                 from src/uncore.cc:1:
+inc/memory_class.h: In member function ‘virtual int MEMORY::invalidate_entry(uint64_t)’:
+inc/memory_class.h:37:56: warning: no return statement in function returning non-void [-Wreturn-type]
+   37 |     virtual int invalidate_entry(uint64_t inval_addr) {};
+      |                                                        ^
+In file included from inc/cache.h:4,
+                 from src/cache.cc:1:
+inc/memory_class.h: In member function ‘virtual int MEMORY::invalidate_entry(uint64_t)’:
+inc/memory_class.h:37:56: warning: no return statement in function returning non-void [-Wreturn-type]
+   37 |     virtual int invalidate_entry(uint64_t inval_addr) {};
+      |                                                        ^
+In file included from inc/cache.h:4,
+                 from inc/ooo_cpu.h:4,
+                 from branch/branch_predictor.cc:1:
+inc/memory_class.h: In member function ‘virtual int MEMORY::invalidate_entry(uint64_t)’:
+inc/memory_class.h:37:56: warning: no return statement in function returning non-void [-Wreturn-type]
+   37 |     virtual int invalidate_entry(uint64_t inval_addr) {};
+      |                                                        ^
+In file included from inc/cache.h:4,
+                 from replacement/base_replacement.cc:1:
+inc/memory_class.h: In member function ‘virtual int MEMORY::invalidate_entry(uint64_t)’:
+inc/memory_class.h:37:56: warning: no return statement in function returning non-void [-Wreturn-type]
+   37 |     virtual int invalidate_entry(uint64_t inval_addr) {};
+      |                                                        ^
+In file included from inc/cache.h:4,
+                 from replacement/llc_replacement.cc:1:
+inc/memory_class.h: In member function ‘virtual int MEMORY::invalidate_entry(uint64_t)’:
+inc/memory_class.h:37:56: warning: no return statement in function returning non-void [-Wreturn-type]
+   37 |     virtual int invalidate_entry(uint64_t inval_addr) {};
+      |                                                        ^
+In file included from inc/cache.h:4,
+                 from prefetcher/llc_prefetcher.cc:1:
+inc/memory_class.h: In member function ‘virtual int MEMORY::invalidate_entry(uint64_t)’:
+inc/memory_class.h:37:56: warning: no return statement in function returning non-void [-Wreturn-type]
+   37 |     virtual int invalidate_entry(uint64_t inval_addr) {};
+      |                                                        ^
+In file included from inc/cache.h:4,
+                 from inc/ooo_cpu.h:4,
+                 from prefetcher/l1i_prefetcher.cc:1:
+inc/memory_class.h: In member function ‘virtual int MEMORY::invalidate_entry(uint64_t)’:
+inc/memory_class.h:37:56: warning: no return statement in function returning non-void [-Wreturn-type]
+   37 |     virtual int invalidate_entry(uint64_t inval_addr) {};
+      |                                                        ^
+In file included from inc/cache.h:4,
+                 from prefetcher/l2c_prefetcher.cc:1:
+inc/memory_class.h: In member function ‘virtual int MEMORY::invalidate_entry(uint64_t)’:
+inc/memory_class.h:37:56: warning: no return statement in function returning non-void [-Wreturn-type]
+   37 |     virtual int invalidate_entry(uint64_t inval_addr) {};
+      |                                                        ^
+In file included from inc/cache.h:4,
+                 from prefetcher/l1d_prefetcher.cc:1:
+inc/memory_class.h: In member function ‘virtual int MEMORY::invalidate_entry(uint64_t)’:
+inc/memory_class.h:37:56: warning: no return statement in function returning non-void [-Wreturn-type]
+   37 |     virtual int invalidate_entry(uint64_t inval_addr) {};
+      |                                                        ^
+make: *** Deleting file 'obj/src/block.o'
+make: *** [Makefile:52: obj/src/block.o] Hangup

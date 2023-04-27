@@ -52,8 +52,8 @@ extern uint32_t PAGE_TABLE_LATENCY, SWAP_LATENCY;
 #define L1I_LATENCY 4
 
 // L1 DATA CACHE
-#define L1D_SET 32
-#define L1D_WAY 8
+#define L1D_SET 64
+#define L1D_WAY 24
 #define L1D_RQ_SIZE 64
 #define L1D_WQ_SIZE 64 
 #define L1D_PQ_SIZE 8
@@ -61,8 +61,8 @@ extern uint32_t PAGE_TABLE_LATENCY, SWAP_LATENCY;
 #define L1D_LATENCY 5 
 
 // L2 CACHE
-#define L2C_SET 512
-#define L2C_WAY 64
+#define L2C_SET 1024
+#define L2C_WAY 16
 #define L2C_RQ_SIZE 32
 #define L2C_WQ_SIZE 32
 #define L2C_PQ_SIZE 16
@@ -71,7 +71,7 @@ extern uint32_t PAGE_TABLE_LATENCY, SWAP_LATENCY;
 
 // LAST LEVEL CACHE
 #define LLC_SET NUM_CPUS*2048
-#define LLC_WAY 128
+#define LLC_WAY 32
 #define LLC_RQ_SIZE NUM_CPUS*L2C_MSHR_SIZE //48
 #define LLC_WQ_SIZE NUM_CPUS*L2C_MSHR_SIZE //48
 #define LLC_PQ_SIZE NUM_CPUS*32
