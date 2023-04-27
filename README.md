@@ -1,4 +1,4 @@
-# CS232 Project - Cache Hierarchy Optimisations for SAT Solver
+# CS230 Project - Cache Hierarchy Optimisations for SAT Solver
 ### Members: Aditya Nemiwal(210050004), Ashwin Goyal(210050024), Divyansh Singhal(210050045)
 On all the traces provided, the following various parameters(or policies) were altered and the resulting changes were observed like IPC or miss rates:
 - Cache Inclusion Policies: Inclusive, Exclusive, and NINE(Non Inclusive Non Exclusive)
@@ -8,6 +8,6 @@ On all the traces provided, the following various parameters(or policies) were a
 - Associativity of Caches
 - Function of access latency as the size of cache
 
-The detailed results obtained are reported in the presentation -----------.
+The detailed results obtained are reported in the following presentation link: https://docs.google.com/presentation/d/1N8Zs5aVaZxt0kvnf_Ilo4hQ3ojCOf8v4WMMcJ9L6qaI/edit?usp=sharing.
 
-To collect and visualise the above required data, python scripts were used which are present in the directory ----------.
+To collect and visualise the above required data, python scripts were used which are present in the directory **Scripts**.
